@@ -10,6 +10,7 @@
 	<title>Prática 1 HTML e CSS</title>
 	<link rel="stylesheet" type="text/css" href="../assets/style/site.css">
 	<script type="text/javascript" src="../assets/js/index.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<header>
@@ -44,17 +45,17 @@
 					<?php
 					
 						$sql = "SELECT
-												fc.ID,
-												fc.Nome,
-												fc.DocumentoFederal,
-												fc.Telefone,
-												fc.Email,
-												mc.Mensagem,
-												fc.Comentario
-										FROM
-												faleconosco fc
-										LEFT JOIN motivocontato mc
-												ON fc.MotivoContatoID = mc.ID";
+									fc.ID,
+									fc.Nome,
+									fc.DocumentoFederal,
+									fc.Telefone,
+									fc.Email,
+									mc.Mensagem,
+									fc.Comentario
+								FROM
+									faleconosco fc
+								LEFT JOIN motivocontato mc
+									ON fc.MotivoContatoID = mc.ID";
 
 						$result = mysqli_query($conn, $sql);
 

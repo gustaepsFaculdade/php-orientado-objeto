@@ -1,16 +1,19 @@
 <?php
-  include("../models/FaleConoscoModel.php");
-
+  require_once("../models/FaleConoscoModel.php");
+  
   class FaleConoscoController {
     
+    private $model;
+
+    public function __construct() {
+      $this->model = new FaleConoscoModel();
+    }
+
     public function ListarMotivos() {
-      $faleConoscoModel = new FaleConoscoModel;
-      $listaMotivos = $faleConoscoModel->ListarMotivos();
-      
-      if (mysqli_num_rows($listaMotivos) > 0) {
-        while ($row = mysqli_fetch_assoc($listaMotivos)) {
-          echo "<option value='".$row["ID"]."'>".$row["Mensagem"]."</option>";
-        }
+      $motivos = $this->model->ListarMotivos();
+
+      foreach ($motivos as $motivo) {
+          echo "<option value='{$motivo['ID']}'>{$motivo['Mensagem']}</option>";
       }
     }
   }
