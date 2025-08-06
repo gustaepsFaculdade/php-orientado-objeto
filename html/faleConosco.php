@@ -25,7 +25,7 @@
 		<section>
 			<h2>Fale conosco!</h2>
 			<p>Entre em nosso grupo de WhatsApp!</p>
-				<form action="../php/processarFormFaleConosco.php" id="formFaleConosco" name="frmfaleconosco" method="POST">
+				<form action="../assets/functions/processaFormFaleConosco.php" id="formFaleConosco" name="frmfaleconosco" method="POST">
 
 					<fieldset class="faleConosco">
 						<legend>Dados pessoais:</legend>
@@ -60,7 +60,7 @@
 								$faleConoscoController = new FaleConoscoController;
 								$faleConoscoController->ListarMotivos();
 							?>
-							
+
 						</select>
 						<label for="comentario">Comentário</label>
 						<textarea name="txacomentario" id="comentario"></textarea>

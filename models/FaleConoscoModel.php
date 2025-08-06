@@ -1,5 +1,5 @@
 <?php
-  require_once("connections/mysql.php");
+  require_once __DIR__.'/connections/mysql.php';
 
   class FaleConoscoModel {
     private $conn;
@@ -15,6 +15,29 @@
       $stmt->execute();
 
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function Inserir(
+      $nome,
+      $email,
+      $telefone,
+      $documentoFederal,
+      $motivoContatoID,
+      $comentario) 
+    {
+      $sql = "INSERT INTO FaleConosco
+                (Nome, DocumentoFederal, Telefone, Email, MotivoContatoID, Comentario)
+              VALUES (:nome, :documentoFederal, :telefone, :email, :motivoContatoID, :comentario)";
+
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute([
+        ':nome' => $nome,
+        ':documentoFederal' => $documentoFederal,
+        ':telefone' => $telefone,
+        ':email' => $email,
+        ':motivoContatoID' => $motivoContatoID,
+        ':comentario' => $comentario
+      ]);
     }
   }
 ?>

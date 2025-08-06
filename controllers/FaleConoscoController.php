@@ -1,5 +1,5 @@
 <?php
-  require_once("../models/FaleConoscoModel.php");
+  require_once __DIR__.'/../models/FaleConoscoModel.php';
   
   class FaleConoscoController {
     
@@ -15,6 +15,23 @@
       foreach ($motivos as $motivo) {
         echo "<option value='{$motivo['ID']}'>{$motivo['Mensagem']}</option>";
       }
+    }
+
+    public function Inserir(
+      $nome,
+      $email,
+      $telefone,
+      $documentoFederal,
+      $idMotivo,
+      $comentario) 
+    {
+      $this->model->Inserir(
+        $nome,
+        $email,
+        $telefone,
+        $documentoFederal,
+        $idMotivo,
+        $comentario);
     }
   }
 ?>

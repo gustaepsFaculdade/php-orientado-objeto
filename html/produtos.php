@@ -1,5 +1,5 @@
 <?php
-	include("../models/connections/mysql.php");
+	require_once("../controllers/ProdutosController.php");
 ?>
 
 <!DOCTYPE html>
@@ -40,55 +40,12 @@
 						<th>Remover</th>
 					</tr>
 				</thead>
-					<tbody>
-
+				<tbody>
 					<?php
-					
-						$sql = "SELECT
-									fc.ID,
-									fc.Nome,
-									fc.DocumentoFederal,
-									fc.Telefone,
-									fc.Email,
-									mc.Mensagem,
-									fc.Comentario
-								FROM
-									faleconosco fc
-								LEFT JOIN motivocontato mc
-									ON fc.MotivoContatoID = mc.ID";
-
-						$result = mysqli_query($conn, $sql);
-
-						if (mysqli_num_rows($result) > 0) {
-							while ($row = mysqli_fetch_assoc($result)) {
-								echo "<tr>";
-
-								echo "<td>".$row["Nome"]."</td>";
-								echo "<td>".formatarDocumento($row["DocumentoFederal"])."</td>";
-								echo "<td>".formatarTelefone($row["Telefone"])."</td>";
-								echo "<td>".$row["Email"]."</td>";
-								echo "<td>".$row["Mensagem"]."</td>";
-								echo "<td>".$row["Comentario"]."</td>";
-								echo '<th><button onclick="RemoverProduto('.$row['ID'].')">Excluir</button></th>';
-
-								echo "</tr>";
-							}
-						}
-						
-						mysqli_close($conn);
-						
-						function formatarDocumento($documento) {
-							return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $documento);
-						}
-
-						function formatarTelefone($telefone) {
-							$telefone = preg_replace('/\D/', '', $telefone);
-							return preg_replace('/(\d{2})(\d{1})(\d{4})(\d{4})/', '($1) $2 $3-$4', $telefone);
-						}
-					
+						$produtoController = new ProdutosController();
+						$produtoController->Listar();
 					?>
-						
-					</tbody>
+				</tbody>
 			</table>
 		</form>   
 	</section>

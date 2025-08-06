@@ -10,8 +10,30 @@
     }
     
     public function Remover($id) {
-      $stmt = $this->conn->prepare("DELETE FROM faleconosco WHERE ID = :id");
+      $sql = "DELETE FROM faleconosco WHERE ID = :id";
+
+      $stmt = $this->conn->prepare($sql);
       $stmt->execute([':id' => $id]);
+    }
+
+    public function Listar() {
+      $sql = "SELECT
+                fc.ID,
+                fc.Nome,
+                fc.DocumentoFederal,
+                fc.Telefone,
+                fc.Email,
+                mc.Mensagem,
+                fc.Comentario
+              FROM
+                FaleConosco fc
+              LEFT JOIN MotivoContato mc
+                ON fc.MotivoContatoID = mc.ID";
+
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute();
+
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
   }
 ?>
