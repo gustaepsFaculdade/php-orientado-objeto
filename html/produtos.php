@@ -1,5 +1,5 @@
 <?php
-	require_once("../controllers/ProdutosController.php");
+	require_once __DIR__.'/../controllers/ProdutosController.php';
 ?>
 
 <!DOCTYPE html>

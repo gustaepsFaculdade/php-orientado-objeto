@@ -1,5 +1,5 @@
 <?php
-	include("../controllers/FaleConoscoController.php");
+	include __DIR__.'/../controllers/FaleConoscoController.php';
 ?>
 
 <!DOCTYPE html>

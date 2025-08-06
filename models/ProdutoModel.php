@@ -1,5 +1,5 @@
 <?php
-  require_once("connections/mysql.php");
+  require_once __DIR__.'/connections/mysql.php';
 
   class ProdutoModel {
     private $conn;
