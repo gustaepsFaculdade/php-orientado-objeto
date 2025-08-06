@@ -69,8 +69,7 @@
 								echo "<td>".$row["Email"]."</td>";
 								echo "<td>".$row["Mensagem"]."</td>";
 								echo "<td>".$row["Comentario"]."</td>";
-								echo "<th><button>Excluir</button></th>";
-								echo '<input type="hidden" name="ID" value="'.$row["ID"].'">';
+								echo '<th><button onclick="RemoverProduto('.$row['ID'].')">Excluir</button></th>';
 
 								echo "</tr>";
 							}

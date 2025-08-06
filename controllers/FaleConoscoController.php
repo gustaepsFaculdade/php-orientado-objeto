@@ -13,7 +13,7 @@
       $motivos = $this->model->ListarMotivos();
 
       foreach ($motivos as $motivo) {
-          echo "<option value='{$motivo['ID']}'>{$motivo['Mensagem']}</option>";
+        echo "<option value='{$motivo['ID']}'>{$motivo['Mensagem']}</option>";
       }
     }
   }
