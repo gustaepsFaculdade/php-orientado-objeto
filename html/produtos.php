@@ -23,7 +23,7 @@
 		<a href="faleConosco.php"><div class="opcao">Fale conosco</div></a>
 	</nav> 
 	<section>
-		<form action="../php/remover.php" id="formListaFaleConosco" name="formListaFaleConosco" method="POST">
+		<form action="../assets/functions/removeRecursoListaFaleConosco.php" id="formListaFaleConosco" name="formListaFaleConosco" method="POST">
 			<h2>Conheça nossos produtos!!!</h2>
 			<table class="tabelaProdutos">
 				<thead>

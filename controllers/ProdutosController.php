@@ -14,8 +14,6 @@
 
     public function Remover($id) {
       $this->produtoModel->Remover($id);
-
-     // header("Location: ../html/produtos.php");
     }
 
     public function Listar() {
@@ -30,7 +28,13 @@
         echo "<td>".$produto["Email"]."</td>";
         echo "<td>".$produto["Mensagem"]."</td>";
         echo "<td>".$produto["Comentario"]."</td>";
-        echo '<th><button>Excluir</button></th>';
+        echo "<td>
+                <form method='post' action='../assets/functions/removeRecursoListaFaleConosco.php'>
+                    <input type='hidden' name='ID' value='".$produto["ID"]."'>
+                    <button type='submit'>Excluir</button>
+                </form>
+              </td>";
+        echo "</tr>";
 
         echo "</tr>";
       }
