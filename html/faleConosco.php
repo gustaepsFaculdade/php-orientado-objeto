@@ -1,6 +1,3 @@
-<?php
-	include __DIR__.'/../controllers/FaleConoscoController.php';
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,9 +53,13 @@
 						<select name="selmotivo" id="motivo">
 							<option value="">Escolha</option>
 							
-							<?php
-								$faleConoscoController = new FaleConoscoController;
-								$faleConoscoController->ListarMotivos();
+							<?php								
+								$container = require __DIR__ . '/../index.php';
+								echo serialize($container);
+								echo serialize($container->get(APP\Controllers\MotivoContatoController::class));
+								$controller = $container->get(APP\Controllers\MotivoContatoController::class);
+								echo serialize($controller);
+								//$controller->listar();
 							?>
 
 						</select>
