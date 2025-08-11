@@ -55,11 +55,8 @@
 							
 							<?php								
 								$container = require __DIR__.'/../index.php';
-								echo serialize($container);
-								echo serialize($container->get(APP\Controllers\MotivoContatoController::class));
 								$controller = $container->get(APP\Controllers\MotivoContatoController::class);
-								echo serialize($controller);
-								//$controller->listar();
+								$controller->listar();
 							?>
 
 						</select>

@@ -1,22 +1,25 @@
 <?php
   require __DIR__ . '/vendor/autoload.php';
+  
+  use DI\ContainerBuilder;
+  use function DI\autowire;
 
-  use DI\Container;
-  use function DI\create;
-
+  use APP\Controllers\MotivoContatoController;
   use APP\Services\MotivoContato\IMotivoContatoService;
   use APP\Services\MotivoContato\MotivoContatoService;
   use APP\Repositories\MotivoContato\IMotivoContatoRepository;
   use APP\Repositories\MotivoContato\MotivoContatoRepository;
-  use APP\Repositories\Connections\IMySql;
-  use APP\Repositories\Connections\MySql;
+  use APP\Repositories\Connections\MySql\IMySqlConnection;
+  use APP\Repositories\Connections\MySql\MySqlConnection;
+  
+  $containerBuilder = new ContainerBuilder();
+  
+  $containerBuilder->addDefinitions([
+    MotivoContatoController::class => autowire(),
+    IMotivoContatoService::class => autowire(MotivoContatoService::class),
+    IMotivoContatoRepository::class => autowire(MotivoContatoRepository::class),
+    IMySqlConnection::class => autowire(MySqlConnection::class)
+  ]);
 
-  $container = new Container();
-
-  $container->set(APP\Controllers\MotivoContatoController::class, create(APP\Controllers\MotivoContatoController::class));
- /* $container->set(IMotivoContatoService::class, create(MotivoContatoService::class));
-  $container->set(IMotivoContatoRepository::class, create(MotivoContatoRepository::class));
-  $container->set(IMySql::class, create(MySql::class));
-*/
-  return $container;
+  return $containerBuilder->build();
 ?>

@@ -1,7 +1,7 @@
 <?php
-  namespace APP\Repositories\Connections;
+  namespace APP\Repositories\Connections\MySql;
 
-  class Mysql implements IMySql 
+  class MySqlConnection implements IMySqlConnection
   {
     private string $host = "localhost";
     private int $port = 3306;
@@ -19,9 +19,9 @@
         $this->pdo = new \PDO($dsn, $this->user, $this->pass);
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         return $this->pdo;
-      } catch (\PDOException $e) 
+      } catch (\PDOException $ex) 
       {
-        die("Erro na conexão: " . $e->getMessage());
+        die("Erro na conexão: " . $ex->getMessage());
       }
     }
   }
