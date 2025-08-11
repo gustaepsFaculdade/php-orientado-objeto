@@ -12,7 +12,7 @@
 		<h1>Geladeiras & Outros - PRINCIPAL</h1>
 	</header>
 	<nav>
-		<a href="index.php"><div class="opcao">Início</div></a>
+		<a href="inicio.php"><div class="opcao">Início</div></a>
 		<a href="produtos.php"><div class="opcao">Geladeiras e Freezers</div></a>
 		<a href="faleConosco.php"><div class="opcao">Fale conosco</div></a>
 	</nav> 

@@ -15,7 +15,7 @@
 		<h1>Fale Conosco</h1>
 	</header>
 	<nav>
-		<a href="index.php"><div class="opcao">Início</div></a>
+		<a href="inicio.php"><div class="opcao">Início</div></a>
 		<a href="produtos.php"><div class="opcao">Geladeiras e Freezers</div></a>
 		<a href="faleConosco.php"><div class="opcao">Fale conosco</div></a>
 	</nav> 
@@ -54,7 +54,7 @@
 							<option value="">Escolha</option>
 							
 							<?php								
-								$container = require __DIR__ . '/../index.php';
+								$container = require __DIR__.'/../index.php';
 								echo serialize($container);
 								echo serialize($container->get(APP\Controllers\MotivoContatoController::class));
 								$controller = $container->get(APP\Controllers\MotivoContatoController::class);
