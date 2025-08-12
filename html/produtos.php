@@ -1,7 +1,3 @@
-<?php
-	require_once __DIR__.'/../controllers/ProdutosController.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -42,8 +38,9 @@
 				</thead>
 				<tbody>
 					<?php
-						$produtoController = new ProdutosController();
-						$produtoController->Listar();
+						$container = require __DIR__.'/../index.php';
+						$controller = $container->get(APP\Controllers\ProdutosController::class);
+						$controller->listar();
 					?>
 				</tbody>
 			</table>

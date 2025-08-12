@@ -1,7 +1,7 @@
-<?php
-  namespace APP\Repositories\MotivoContato;
+<?php namespace APP\Repositories\MotivoContato;
   
   use APP\Repositories\Connections\MySql\IMySqlConnection;
+  use PDO;
 
   class MotivoContatoRepository implements IMotivoContatoRepository
   {
@@ -18,7 +18,7 @@
       $stmt = $this->_mySqlConnection->conectar()->prepare($sql);
       $stmt->execute();
 
-      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
   }
 ?>
