@@ -1,20 +1,19 @@
 <?php namespace APP\Controllers;
 
   use APP\Services\Produto\IProdutoService;
-  require_once __DIR__.'/../assets/extensions/StringFormats.php';
+  use APP\Assets\Extensions\StringFormats;
 
   class ProdutosController 
   {
     private readonly IProdutoService $_produtoService;
-    private $stringFormats;
+    private readonly StringFormats $_stringFormats;
 
-    public function __construct(IProdutoService $produtoService){
+    public function __construct(IProdutoService $produtoService, StringFormats $stringFormats){
       $this->_produtoService = $produtoService;
-      $this->stringFormats = new \StringFormats();
+      $this->_stringFormats = $stringFormats;
     }
 
     public function remover($id) {
-      echo $id;
       $this->_produtoService->remover($id);
     }
 
@@ -25,8 +24,8 @@
         echo "<tr>";
 
         echo "<td>".$produto["Nome"]."</td>";
-        echo "<td>".$this->stringFormats->FormatarDocumento($produto["DocumentoFederal"])."</td>";
-        echo "<td>".$this->stringFormats->FormatarTelefone($produto["Telefone"])."</td>";
+        echo "<td>".$this->_stringFormats->FormatarDocumento($produto["DocumentoFederal"])."</td>";
+        echo "<td>".$this->_stringFormats->FormatarTelefone($produto["Telefone"])."</td>";
         echo "<td>".$produto["Email"]."</td>";
         echo "<td>".$produto["Mensagem"]."</td>";
         echo "<td>".$produto["Comentario"]."</td>";

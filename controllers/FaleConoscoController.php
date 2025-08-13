@@ -1,15 +1,16 @@
-<?php
-  require_once __DIR__.'/../models/FaleConoscoModel.php';
-  
+<?php namespace APP\Controllers;
+
+  use APP\Services\FaleConosco\IFaleConoscoService;
+
   class FaleConoscoController {
     
-    private $model;
+    private readonly IFaleConoscoService $_faleConoscoService;
 
-    public function __construct() {
-      $this->model = new FaleConoscoModel();
+    public function __construct(IFaleConoscoService $faleConoscoService) {
+      $this->_faleConoscoService = $faleConoscoService;
     }
 
-    public function Inserir(
+    public function inserir(
       $nome,
       $email,
       $telefone,
@@ -17,7 +18,7 @@
       $idMotivo,
       $comentario) 
     {
-      $this->model->Inserir(
+      $this->_faleConoscoService->inserir(
         $nome,
         $email,
         $telefone,

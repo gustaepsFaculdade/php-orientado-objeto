@@ -1,12 +1,14 @@
 <?php
-  require_once __DIR__.'/../extensions/StringFormats.php';
-  require_once __DIR__.'/../../controllers/FaleConoscoController.php';
+  $container = require __DIR__.'/../../index.php';
+
+  use APP\Controllers\FaleConoscoController;
+  use APP\Assets\Extensions\StringFormats;
 
   if ($_SERVER["REQUEST_METHOD"] != "POST")
     return;
 
-  $stringFormats = new StringFormats();
-  $faleConoscoController = new FaleConoscoController();
+  $faleConoscoController = $container->get(FaleConoscoController::class);
+  $stringFormats = $container->get(StringFormats::class);
 
   $nome = $_POST['txtnome']; 
   $email = $_POST['txtemail'];
@@ -14,8 +16,8 @@
   $documentoFederal = $stringFormats->RemoverCaracteresEspeciais($_POST['txtdocumento']);
   $motivoContatoID = formatarMotivo($_POST['selmotivo'] ?? '');
   $comentario = formatarMotivo($_POST['txacomentario'] ?? '');
-
-  $faleConoscoController->Inserir(
+ 
+  $faleConoscoController->inserir(
     $nome,
     $email,
     $telefone,

@@ -1,4 +1,5 @@
-<?php
+<?php namespace APP\Assets\Extensions;
+
   class StringFormats {
     public function FormatarDocumento($documento) {
       return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $documento);
